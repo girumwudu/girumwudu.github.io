@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Girum Wudu — Artist Portfolio</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --accent: #ff6f3a;
+      --bg: #080808;
+      --text: #fff;
+      --muted: rgba(255,255,255,0.7);
+      --card: rgba(255,255,255,0.03);
+      --maxw: 1100px;
+    }
+
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:'Poppins',sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height:1.5;
+      scroll-behavior:smooth;
+    }
+    a{color:inherit;text-decoration:none;}
+    h1,h2,h3{margin:0;}
+
+    .container{
+      max-width: var(--maxw);
+      margin:0 auto;
+      padding:40px 20px;
+    }
+
+    /* HERO */
+    header.hero{
+      min-height: clamp(700px, 90vh, 1000px);
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+      text-align:center;
+      padding:40px 20px;
+      background: 
+        linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.6)),
+        url('image/girum1.jpg') top center/cover no-repeat;
+    }
+    .hero-inner{
+      max-width:900px;
+      padding:30px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.25));
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.06);
+      box-shadow:0 8px 30px rgba(0,0,0,0.6);
+      margin-bottom:40px;
+      animation: fadeUp .9s ease both;
+    }
+    .hero h1{
+      font-size: clamp(28px,4vw,48px);
+      color: var(--accent);
+      margin-bottom:12px;
+    }
+    .hero .sub{
+      font-size: clamp(14px,2vw,18px);
+      color: var(--muted);
+      margin-bottom:16px;
+    }
+    .hero .cta-button{
+      display:inline-block;
+      background: var(--accent);
+      color:#fff;
+      padding:14px 24px;
+      border-radius:8px;
+      font-weight:600;
+      transition: transform .2s ease;
+    }
+    .hero .cta-button:hover{
+      transform: translateY(-4px);
+    }
+
+    section{padding:64px 0;}
+    h2{text-align:center;color:var(--accent);margin-bottom:20px;}
+    p.lead{max-width:900px;margin:0 auto 12px auto;color: var(--muted); text-align:center; font-size:16px;}
+
+    /* About */
+    .about-grid{
+      display:grid;
+      gap:28px;
+      margin-top:18px;
+    }
+    .card{
+      background:var(--card);
+      padding:18px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    /* Music */
+    .music-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+      gap:20px;
+      margin-top:20px;
+    }
+    .music-card{
+      background: var(--card);
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.06);
+      box-shadow:0 6px 20px rgba(0,0,0,0.4);
+      padding:20px;
+      text-align:center;
+      display:flex;
+      flex-direction: column;
+      gap:12px;
+    }
+    .music-card h3{
+      color: var(--accent);
+      font-size:20px;
+    }
+    .music-card .link-container{
+      display:flex;
+      justify-content:center;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .music-card .link-container a{
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+    }
+    .music-card .link-container img{
+      width:120px;
+      border-radius:10px;
+      transition: transform .2s ease;
+    }
+    .music-card .link-container img.logo{
+      width:32px; /* small logo */
+      border-radius:0;
+    }
+    .music-card .link-container a:hover img:not(.logo){
+      transform: scale(1.05);
+    }
+
+    /* Gallery */
+    .gallery-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap:16px;
+      margin-top:20px;
+    }
+    .gallery-card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      border-radius:12px;
+      transition: transform .3s ease;
+    }
+    .gallery-card img:hover{
+      transform: scale(1.05);
+    }
+        /* Video Sections (YouTube & TikTok) */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .video-card {
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .video-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .video-card h3 {
+      color: var(--accent);
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+        .social-logo {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .social-logo img {
+      width: 80px;
+      height: auto;
+      opacity: 0.85;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .social-logo img:hover {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+    /* Socials */
+    #socials{
+      background: rgba(255,255,255,0.03);
+      padding: 60px 20px;
+      border-radius: 14px;
+      text-align: center;
+      margin: 40px auto;
+      max-width: var(--maxw);
+    }
+    #socials h2{
+      font-size:32px;
+      color: var(--accent);
+      margin-bottom:24px;
+    }
+    .socials{
+      display:flex;
+      gap:20px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .socials a{
+      display:inline-block;
+      padding:14px 24px;
+      background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:999px;
+      font-weight:600;
+      font-size:16px;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.04);
+      transition: transform .2s, background .2s;
+    }
+    .socials a:hover{
+      transform:translateY(-3px);
+      background:linear-gradient(90deg, rgba(255,111,58,0.12), rgba(255,111,58,0.06));
+      color:#fff;
+    }
+
+    footer{
+      text-align:center;
+      padding:18px 0;
+      color: rgba(255,255,255,0.5);
+      font-size:14px;
+      border-top:1px solid rgba(255,255,255,0.03);
+    }
+
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(16px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    @media (max-width:520px){
+      .hero-inner{padding:24px;}
+      .music-card .link-container img{width:100px;}
+      .music-card .link-container img.logo{width:28px;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner container">
+      <h1>Girum Wudu</h1>
+      <div class="sub">Ethiopian Artist & Musician | Traditional & Modern Melodies</div>
+      <a href="https://www.youtube.com/@Girum_Widu" target="_blank" class="cta-button">Listen his musics</a>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <h2>About Girum Wudu</h2>
+      <p class="lead">
+        Girum Wudu is a prominent and highly respected Ethiopian vocalist celebrated for his masterful command of traditional Ethiopian music. He is particularly renowned for bringing the rich and distinctive sounds of the Gojam, Wollo, and Gondar regions to a wider audience.
+
+His musical repertoire is a powerful testament to Ethiopian culture, with songs that vividly celebrate its deep-rooted heritage, historical narratives, and regional identities. A hallmark of his work is its ability to inspire a profound and resonant sense of patriotism among his listeners.
+
+As a significant figure in the contemporary Ethiopian music scene, Girum Wudu has achieved considerable digital success. His popular songs and music videos have collectively garnered a massive following, accumulating over 10,000,000 views on YouTube, cementing his status as one of Ethiopia's most streamed and influential traditional singers.
+      <div class="about-grid">
+        <div class="card">
+          <h3>Biography</h3>
+          <p>Girum Wudu is not merely a singer but a profound modern ambassador of Ethiopian traditional melodies. Highly regarded for his thoughtful and expressive artistry, he skillfully channels the spirit of Ethiopia's diverse cultural landscape.
+
+His music is consistently dedicated to celebrating deep-rooted Ethiopian traditions, often incorporating the unique regional styles of areas like Gojam, Wollo, and Gondar. Through his powerful vocal delivery and authentic compositions, Girum Wudu's work reliably evokes a strong sense of national pride and patriotism in his audience, making him a central figure in preserving and popularizing Ethiopia's musical heritage for a new generation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIC -->
+  <section id="music">
+    <div class="container">
+      <h2>Featured Music</h2>
+      <div class="music-grid" id="musicGrid"></div>
+    </div>
+  </section>
+
+    <!-- NEW RELEASED VIDEOS (YOUTUBE) -->
+  <section id="youtube-videos">
+    <div class="container">
+      <h2>New Released Videos</h2>
+      <div class="video-grid" id="youtubeGrid"></div>
+
+      <!-- YouTube Logo -->
+      <div class="social-logo">
+        <a href="https://www.youtube.com/@GirumWudu" target="_blank">
+          <img src="image/youtube-logo.png" alt="YouTube" />
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="container">
+      <h2>Gallery</h2>
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+  </section>
+
+  <!-- SOCIALS -->
+  <section id="socials">
+    <div class="container">
+      <h2>Follow Girum Wudu</h2>
+      <div class="socials">
+        <a href="https://youtube.com/@Girum_Widu" target="_blank">YouTube</a>
+        <a href="https://instagram.com/girum_wudu?igsh=c3FqeTR4MzhtMXBx" target="_blank">Instagram</a>
+        <a href="https://facebook.com/share/1AAdBKRRkC" target="_blank">Facebook</a>
+        <a href="https://tiktok.com/@girumwudu?_t=ZM-8tnA071wII1&_r=1" target="_blank">TikTok</a>
+        <a href="https://open.spotify.com/artist/6NjH8HwMk8IeyDzoIsopim?si=ySqx7HFXQ-uNCc_rJdEEVA" target="_blank">Spotify</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 Girum Wudu | All Rights Reserved.
+  </footer>
+
+  <script>
+    const musicList = [
+      {
+        title: "Girum Wudu - Ney Ney",
+        youtube: "https://www.youtube.com/watch?v=xeqdM1htqWA",
+        youtubeImg: "image/neyney-thumb.jpg",
+        youtubeLogo: "image/youtube-logo.png",
+        spotify: "https://open.spotify.com/artist/6NjH8HwMk8IeyDzoIsopim",
+        spotifyImg: "image/neyney-thumb.jpg",
+        spotifyLogo: "image/spotify-logo.png"
+      },
+      {
+        title: "Girum Wudu - ጥቁር ደም",
+        youtube: "https://www.youtube.com/watch?v=DM6SEfV5Q0w",
+        youtubeImg: "image/girum2.jpg",
+        youtubeLogo: "image/youtube-logo.png",
+        spotify: "https://open.spotify.com/artist/6NjH8HwMk8IeyDzoIsopim",
+        spotifyImg: "image/girum2.jpg",
+        spotifyLogo: "image/spotify-logo.png"
+      },
+      {
+        title: "Girum Wudu - ስሜ ነው ጎንደር",
+        youtube: "https://www.youtube.com/watch?v=3XSsHqz0piU&list=RD3XSsHqz0piU&start_radio=1&pp=ygUKZ2lydW0gd3VkdaAHAQ%3D%3D",
+        youtubeImg: "image/girum7.jpg",
+        youtubeLogo: "image/youtube-logo.png",
+        spotify: "https://open.spotify.com/artist/6NjH8HwMk8IeyDzoIsopim",
+        spotifyImg: "image/girum7.jpg",
+        spotifyLogo: "image/spotify-logo.png"
+      },
+      {
+        title: "Girum Wudu - ኢትዮጵያ ትቅደም 1",
+        youtube: "https://www.youtube.com/watch?v=smwIdKL4HvY&list=RDsmwIdKL4HvY&start_radio=1&pp=ygUKZ2lydW0gd3VkdaAHAQ%3D%3D",
+        youtubeImg: "image/girum8.jpg",
+        youtubeLogo: "image/youtube-logo.png",
+        spotify: "https://open.spotify.com/artist/6NjH8HwMk8IeyDzoIsopim",
+        spotifyImg: "image/girum8.jpg",
+        spotifyLogo: "image/spotify-logo.png"
+      },
+      {
+        title: "Girum Wudu - የሻሽዎርቅ በላይ",
+        youtube: "https://www.youtube.com/watch?v=yndm4pi_hps&list=RDyndm4pi_hps&start_radio=1&pp=ygUcZ2lydW0gd3VkdSBtdXNpYyB5ZXNoYXNod29ya6AHAdIHCQkDCgGHKiGM7w%3D%3D",
+        youtubeImg: "image/girum9.jpg",
+        youtubeLogo: "image/youtube-logo.png",
+        spotify: "https://open.spotify.com/artist/6NjH8HwMk8IeyDzoIsopim",
+        spotifyImg: "image/girum9.jpg",
+        spotifyLogo: "image/spotify-logo.png"
+      },
+      {
+        title: "Girum Wudu - ጎንደር ጎንደር",
+        youtube: "https://www.youtube.com/watch?v=VvaxIsxQaMU&list=RDVvaxIsxQaMU&start_radio=1&pp=ygUeZ2lydW0gd3VkdSBtdXNpYyBnb25kYXIgZ29uZGFyoAcB",
+        youtubeImg: "image/girum10.jpg",
+        youtubeLogo: "image/youtube-logo.png",
+        spotify: "https://open.spotify.com/artist/6NjH8HwMk8IeyDzoIsopim",
+        spotifyImg: "image/girum10.jpg",
+        spotifyLogo: "image/spotify-logo.png"
+      },
+      {
+        title: "Girum Wudu - ነይ ነይ 2",
+        youtube: "https://www.youtube.com/watch?v=fEXoQLYK5b0&list=RDfEXoQLYK5b0&start_radio=1&pp=ygUeZ2lydW0gd3VkdSBtdXNpYyBnb25kYXIgZ29uZGFyoAcB",
+        youtubeImg: "image/girum11.jpg",
+        youtubeLogo: "image/youtube-logo.png",
+        spotify: "https://open.spotify.com/artist/6NjH8HwMk8IeyDzoIsopim",
+        spotifyImg: "image/girum11.jpg",
+        spotifyLogo: "image/spotify-logo.png"
+      },
+      {
+        title: "Girum Wudu - ፋና",
+        youtube: "https://www.youtube.com/watch?v=38c2ojJKEKY&list=RD38c2ojJKEKY&start_radio=1&pp=ygUeZ2lydW0gd3VkdSBtdXNpYyBnb25kYXIgZ29uZGFyoAcB",
+        youtubeImg: "image/girum12.jpg",
+        youtubeLogo: "image/youtube-logo.png",
+        spotify: "https://open.spotify.com/artist/6NjH8HwMk8IeyDzoIsopim",
+        spotifyImg: "image/girum12.jpg",
+        spotifyLogo: "image/spotify-logo.png"
+      },
+      {
+        title: "Girum Wudu - ይቅር በለን",
+        youtube: "https://www.youtube.com/watch?v=DAr80QQY_yg&list=RDDAr80QQY_yg&start_radio=1&pp=ygUeZ2lydW0gd3VkdSBtdXNpYyBnb25kYXIgZ29uZGFyoAcB",
+        youtubeImg: "image/girum13.jpg",
+        youtubeLogo: "image/youtube-logo.png",
+        spotify: "https://open.spotify.com/artist/6NjH8HwMk8IeyDzoIsopim",
+        spotifyImg: "image/girum13.jpg",
+        spotifyLogo: "image/spotify-logo.png"
+      }, 
+      {
+        title: "Girum Wudu - እንደማመጥ(ኢትዮጵያ ትቅደም 2)",
+        youtube: "https://www.youtube.com/watch?v=WbfnWV3fRdU&list=RDWbfnWV3fRdU&start_radio=1&pp=ygUcZ2lydW0gd3VkdSBtdXNpYyAgZW5pZGVtYW1ldKAHAQ%3D%3D",
+        youtubeImg: "image/girum14.jpg",
+        youtubeLogo: "image/youtube-logo.png",
+        spotify: "https://open.spotify.com/artist/6NjH8HwMk8IeyDzoIsopim",
+        spotifyImg: "image/girum14.jpg",
+        spotifyLogo: "image/spotify-logo.png"
+      }
+
+    ];
+
+    const musicGrid = document.getElementById('musicGrid');
+    musicList.forEach(song => {
+      const div = document.createElement('div');
+      div.className = 'music-card';
+      div.innerHTML = `
+        <h3>${song.title}</h3>
+        <div class="link-container">
+          <a href="${song.youtube}" target="_blank">
+            <div><strong>YOUTUBE</strong></div>
+            <img src="${song.youtubeImg}" alt="YouTube Thumbnail">
+            <img src="${song.youtubeLogo}" alt="YouTube Logo" class="logo">
+          </a>
+          <a href="${song.spotify}" target="_blank">
+            <div><strong>SPOTIFY</strong></div>
+            <img src="${song.spotifyImg}" alt="Spotify Thumbnail">
+            <img src="${song.spotifyLogo}" alt="Spotify Logo" class="logo">
+          </a>
+        </div>
+      `;
+      musicGrid.appendChild(div);
+    });
+
+    const galleryList = ["girum2.jpg","girum3.jpg","girum4.jpg","girum5.jpg","girum6.jpg"];
+    const galleryGrid = document.getElementById('galleryGrid');
+    galleryList.forEach(img => {
+      const div = document.createElement('div');
+      div.className = 'gallery-card';
+      div.innerHTML = `<img src="image/${img}" alt="Girum Wudu photo">`;
+      galleryGrid.appendChild(div);
+    });
+
+        // --- YouTube New Released Videos ---
+    const youtubeVideos = [
+      {
+        title: "Girum Wudu - ምርጥ ምርጥ ጎንደርኛ ሙዚቃ",
+        thumbnail: "image/youtube1.jpg",
+        link: "https://www.youtube.com/watch?v=eQ8kEzpi7f4&t=230s"
+      },
+      {
+        title: "Girum Wudu - እሪኩም ዘመዳ",
+        thumbnail: "image/youtube2.jpg",
+        link: "https://www.youtube.com/watch?v=gjms6hQey5U&pp=0gcJCQMKAYcqIYzv"
+      },
+      {
+        title: "Girum Wudu - ባህላዊ ስብስብ(ገብረማርያም አስናቀው፣ አበበች አቡሃይ)",
+        thumbnail: "image/youtube3.jpg",
+        link: "https://www.youtube.com/watch?v=QL8B6yoMzTg"
+      },
+       {
+        title: "Girum Wudu - አርሂብ ግባ(ገብረማርያም አስናቀው)",
+        thumbnail: "image/youtube4.jpg",
+        link: "https://www.youtube.com/watch?v=P0VwH7oio9M"
+      }
+    ];
+
+    const youtubeGrid = document.getElementById('youtubeGrid');
+    youtubeVideos.forEach(video => {
+      const div = document.createElement('div');
+      div.className = 'video-card';
+      div.innerHTML = `
+        <a href="${video.link}" target="_blank">
+          <img src="${video.thumbnail}" alt="${video.title}">
+          <h3>${video.title}</h3>
+        </a>
+      `;
+      youtubeGrid.appendChild(div);
+    });
+
+  </script>
+
+</body>
+</html>
